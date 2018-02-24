@@ -51,7 +51,7 @@ contract("CustomToken", function(accounts) {
         .then(() => {
           return customTokenInstance.balanceOf(user).then(balance => {
             assert.equal(
-              tkn2num(balance),
+              balance,
               exp_user_bal + 50,
               "The balance of the token is wrong"
             );
@@ -60,8 +60,4 @@ contract("CustomToken", function(accounts) {
     });
   });
 
-  function tkn2num(bal) {
-    const BigNumber = require("bignumber.js").BigNumber;
-    return new BigNumber(bal).toNumber();
-  }
 });

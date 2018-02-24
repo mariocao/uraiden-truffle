@@ -7,7 +7,6 @@
     "test": "test"
   },
   "dependencies": {
-    "bignumber.js": "^6.0.0"
   },
   "devDependencies": {},
   "scripts": {
