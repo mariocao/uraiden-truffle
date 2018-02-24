@@ -1,0 +1,24 @@
+{
+  "name": "uraiden-truffle",
+  "version": "0.2.0",
+  "description": "Truffle project for supporting MicroRaiden (uRaiden) channels on Ethereum blockchains",
+  "main": "truffle.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "bignumber.js": "^6.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "truffle test"
+  },
+  "keywords": [
+    "uraiden",
+    "microraiden",
+    "truffle",
+    "ethereum",
+    "blockchain"
+  ],
+  "author": "Mario Cao"
+}
