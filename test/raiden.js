@@ -7,9 +7,6 @@ contract("RaidenMicroTransferChannels", function(accounts) {
   const receiver = accounts[0];
   const user = accounts[1];
   const deposit = 5;
-  // console.log("deposit: ", deposit);
-  // console.log("account[0] - receiver: ", receiver);
-  // console.log("account[1] - sender: ", sender);
 
   it("...requires a user with minted tokens", function() {
     return CustomToken.deployed().then(function(token) {
@@ -22,6 +19,32 @@ contract("RaidenMicroTransferChannels", function(accounts) {
             "The balance of the token is less than 50"
           );
         });
+      });
+    });
+  });
+
+  it("...should allow creating a channel", function() {
+    return CustomToken.deployed().then(function(token) {
+      return RaidenMicroTransferChannels.deployed().then(function(uraiden) {
+        console.log("\nuRaiden addr: ", uraiden.address);
+        token
+          .approve(uraiden.address, deposit, {
+            from: user
+          })
+          .then(() => {
+            // assert.equal(approval, "", "rm -The value 89 was not stored.");
+            return uraiden
+              .createChannel(receiver, deposit, {
+                from: user
+              })
+              .then(result => {
+                assert.equal(
+                  result.logs[0]["event"],
+                  "ChannelCreated",
+                  "No event for channel creation logged"
+                );
+              });
+          });
       });
     });
   });
