@@ -14,7 +14,7 @@ contract("RaidenMicroTransferChannels", function(accounts) {
       token.mint({ from: user, value: web3.toWei("0.1", "ether") }).then(() => {
         return token.balanceOf(user).then(balance => {
           assert.isAtLeast(
-            balance,
+            tkn2num(balance),
             50,
             "The balance of the token is less than 50"
           );
@@ -48,4 +48,10 @@ contract("RaidenMicroTransferChannels", function(accounts) {
       });
     });
   });
+
+  function tkn2num(bal) {
+    const BigNumber = require("bignumber.js").BigNumber;
+    return new BigNumber(bal).toNumber();
+  }
+
 });
