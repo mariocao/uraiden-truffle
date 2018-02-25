@@ -11,7 +11,6 @@ contract("CustomToken", function(accounts) {
     return CustomToken.deployed()
       .then(function(instance) {
         customTokenInstance = instance;
-
         return customTokenInstance.balanceOf(owner);
       })
       .then(function(balance) {
@@ -27,7 +26,6 @@ contract("CustomToken", function(accounts) {
     return CustomToken.deployed()
       .then(function(instance) {
         customTokenInstance = instance;
-
         return customTokenInstance.balanceOf(user);
       })
       .then(function(balance) {
@@ -40,29 +38,28 @@ contract("CustomToken", function(accounts) {
   });
 
   it("...should allow token minting", function() {
-    return CustomToken.deployed().then(function(instance) {
-      customTokenInstance = instance;
-
-      customTokenInstance
-        .mint({
+    return CustomToken.deployed()
+      .then(function(instance) {
+        customTokenInstance = instance;
+        customTokenInstance.mint({
           from: user,
           value: web3.toWei("0.1", "ether")
-        })
-        .then(() => {
-          return customTokenInstance.balanceOf(user).then(balance => {
-            assert.equal(
-              tkn2num(balance),
-              exp_user_bal + 50,
-              "The balance of the token is wrong"
-            );
-          });
         });
-    });
+      })
+      .then(() => {
+        return customTokenInstance.balanceOf(user);
+      })
+      .then(balance => {
+        assert.equal(
+          tkn2num(balance),
+          exp_user_bal + 50,
+          "The balance of the token is wrong"
+        );
+      });
   });
 
   function tkn2num(bal) {
     const BigNumber = require("bignumber.js").BigNumber;
     return new BigNumber(bal).toNumber();
   }
-  
 });
