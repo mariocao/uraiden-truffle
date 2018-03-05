@@ -2,14 +2,15 @@
   "name": "uraiden-truffle",
   "version": "0.2.0",
   "author": "Mario Cao",
-  "license": "ISC",
-  "description": "Truffle project for supporting MicroRaiden (uRaiden) channels on Ethereum blockchains",
+  "description":
+    "Truffle project for supporting MicroRaiden (uRaiden) channels on Ethereum blockchains",
   "keywords": [
     "uraiden",
     "microraiden",
     "truffle",
     "ethereum",
-    "blockchain"
+    "blockchain",
+    "solidity"
   ],
   "main": "truffle.js",
   "directories": {
